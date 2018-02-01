@@ -22,6 +22,13 @@ class City {
         self.longitude = longitude.description
     }
     
+    init(name: String, country: String, latitude: String, longitude: String) {
+        self.name = name
+        self.country = country
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
 }
 
 func ==(lhs: City, rhs: City) -> Bool {

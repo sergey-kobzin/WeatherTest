@@ -13,6 +13,7 @@ class ForecastTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
@@ -22,6 +23,7 @@ class ForecastTableViewCell: UITableViewCell {
         dateLabel.text = forecast.date
         weatherImageView.image = UIImage(named: forecast.weather.icon)
         temperatureLabel.text = forecast.weather.temperature + " ℃"
+        windLabel.text = "Wind: " + forecast.weather.windDirection + "\n" + forecast.weather.windSpeed + " m/s"
         descriptionLabel.text = forecast.weather.description.capitalized
         pressureLabel.text = "Pressure: " + forecast.weather.pressure + " mmHg"
         humidityLabel.text = "Humidity: " + forecast.weather.humidity + " %"

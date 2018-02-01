@@ -13,10 +13,11 @@ class MasterViewController: UITableViewController {
     var cities = [City]()
     var filteredCities = [City]()
     
+    var searchText = ""
+    
     var searchController = UISearchController(searchResultsController: nil)
     
     var isFilterActive: Bool {
-        guard let searchText = searchController.searchBar.text else { return false }
         let active = searchController.isActive && !searchText.isEmpty
         return active
     }
@@ -32,12 +33,13 @@ class MasterViewController: UITableViewController {
         tableView.tableHeaderView = searchBar
         tableView.tableFooterView = UIView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getCities()
+    }
 
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = isFilterActive ? filteredCities.count : cities.count
@@ -61,13 +63,10 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let index = indexPath.row
-            if isFilterActive {
-                let removedCity = filteredCities.remove(at: index)
-                cities = cities.filter({ $0 != removedCity })
-            } else {
-                cities.remove(at: index)
-            }
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let city = isFilterActive ? filteredCities[index] : cities[index]
+            DatabaseManager.removeCity(city: city, completionHandler: { (success) in
+                getCities()
+            })
         }
     }
     
@@ -75,22 +74,30 @@ class MasterViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else { return }
-        switch identifier {
-        case "ShowSearchViewController":
-            guard let destinationViewController = segue.destination as? SearchViewController else { return }
-            destinationViewController.delegate = self
-        case "ShowWeatherViewController":
+        if identifier == "ShowWeatherViewController" {
             guard let destinationViewController = segue.destination as? WeatherViewController, let index = tableView.indexPathForSelectedRow?.row else { return }
             destinationViewController.city = isFilterActive ? filteredCities[index] : cities[index]
-        default:
-            break
         }
     }
     
     // MARK: - Custom functions
     
-    func filterCities(withSearchText searchText: String) {
-        filteredCities = cities.filter({ $0.name.lowercased().contains(searchText) })
+    func getCities() {
+        DatabaseManager.getCities(completionHandler: { (cities) in
+            guard let cities = cities else {
+                AlertManager.showAlert(withTitle: "Error", withMessage: "Error getting data from the database", inViewController: self)
+                return
+            }
+            self.cities = cities
+            getFilteredCities()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    func getFilteredCities() {
+        filteredCities = isFilterActive ? cities.filter({ $0.name.lowercased().contains(searchText) }) : cities
     }
     
 }
@@ -101,20 +108,8 @@ extension MasterViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text?.lowercased() else { return }
-        filterCities(withSearchText: searchText)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-}
-
-// MARK: - Search view controller delegate
-
-extension MasterViewController: SearchViewControllerDelegate {
-    
-    func searchViewControllerDidSelect(city: City) {
-        cities.append(city)
+        self.searchText = searchText
+        getFilteredCities()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

@@ -10,11 +10,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cities-->
+        <!--Master Table View Controller-->
         <scene sceneID="uW3-DI-jzc">
             <objects>
-                <tableViewController storyboardIdentifier="MasterViewController" id="U2L-MM-3sT" customClass="MasterViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="32y-Ag-Phy">
+                <tableViewController storyboardIdentifier="MasterViewController" automaticallyAdjustsScrollViewInsets="NO" id="U2L-MM-3sT" userLabel="Master Table View Controller" customClass="MasterViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="32y-Ag-Phy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -65,20 +65,20 @@
             </objects>
             <point key="canvasLocation" x="776.79999999999995" y="160.56971514242881"/>
         </scene>
-        <!--Weather-->
+        <!--Weather Table View Controller-->
         <scene sceneID="U10-hC-xeE">
             <objects>
-                <tableViewController storyboardIdentifier="WeatherViewController" id="0RV-op-3NH" customClass="WeatherViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="WeatherViewController" automaticallyAdjustsScrollViewInsets="NO" id="0RV-op-3NH" userLabel="Weather Table View Controller" customClass="WeatherViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cmH-9U-bmn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="271" id="8Je-5t-ZG4" userLabel="Weather Table View Cell" customClass="WeatherTableViewCell" customModule="WeatherTest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="271"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="289" id="8Je-5t-ZG4" userLabel="Weather Table View Cell" customClass="WeatherTableViewCell" customModule="WeatherTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="289"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Je-5t-ZG4" id="SKc-Ej-gPg">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="271"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="289"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWT-8k-7et" userLabel="City Name Label">
@@ -100,6 +100,12 @@
                                                 <constraint firstAttribute="width" constant="97" id="z3t-Yh-eLr"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc4-Jm-lvC" userLabel="Wind Label">
+                                            <rect key="frame" x="16" y="96" width="37.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="g2c-ZQ-duq" userLabel="Temperature Label">
                                             <rect key="frame" x="224" y="81" width="79.5" height="48"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
@@ -125,7 +131,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 day weather forecast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cg-Z5-aSW" userLabel="Forecast Title Label">
-                                            <rect key="frame" x="79.5" y="219" width="161" height="18"/>
+                                            <rect key="frame" x="79.5" y="243" width="161" height="18"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -134,11 +140,12 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="FOI-nF-ESy" secondAttribute="trailing" constant="16" id="1SF-ma-2Ao"/>
                                         <constraint firstItem="BM3-hR-bY1" firstAttribute="top" secondItem="nWT-8k-7et" secondAttribute="bottom" id="5FF-JB-dUu"/>
-                                        <constraint firstItem="5cg-Z5-aSW" firstAttribute="top" secondItem="Kv0-rC-Lg3" secondAttribute="bottom" constant="16" id="7bQ-RS-L0i"/>
+                                        <constraint firstItem="5cg-Z5-aSW" firstAttribute="top" secondItem="Kv0-rC-Lg3" secondAttribute="bottom" constant="40" id="7bQ-RS-L0i"/>
                                         <constraint firstItem="edl-Ki-bo7" firstAttribute="top" secondItem="ZWO-ti-qAh" secondAttribute="bottom" constant="8" id="CvV-Qx-OfV"/>
                                         <constraint firstItem="FOI-nF-ESy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kv0-rC-Lg3" secondAttribute="trailing" constant="16" id="Ihb-wA-Fxc"/>
+                                        <constraint firstItem="Wc4-Jm-lvC" firstAttribute="centerY" secondItem="ZWO-ti-qAh" secondAttribute="centerY" id="JFT-RS-N8k"/>
                                         <constraint firstItem="nWT-8k-7et" firstAttribute="centerX" secondItem="SKc-Ej-gPg" secondAttribute="centerX" id="MLq-Rs-3DV"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5cg-Z5-aSW" secondAttribute="bottom" constant="16" id="Puy-r0-BYG"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5cg-Z5-aSW" secondAttribute="bottom" constant="8" id="Puy-r0-BYG"/>
                                         <constraint firstItem="g2c-ZQ-duq" firstAttribute="centerY" secondItem="ZWO-ti-qAh" secondAttribute="centerY" id="Pwf-Uf-uxA"/>
                                         <constraint firstItem="edl-Ki-bo7" firstAttribute="centerX" secondItem="SKc-Ej-gPg" secondAttribute="centerX" id="Qzd-gW-alq"/>
                                         <constraint firstItem="5cg-Z5-aSW" firstAttribute="centerX" secondItem="SKc-Ej-gPg" secondAttribute="centerX" id="Tzg-8V-vL3"/>
@@ -146,6 +153,8 @@
                                         <constraint firstItem="Kv0-rC-Lg3" firstAttribute="top" secondItem="edl-Ki-bo7" secondAttribute="bottom" constant="8" id="Xr5-XW-7sV"/>
                                         <constraint firstAttribute="trailing" secondItem="g2c-ZQ-duq" secondAttribute="trailing" constant="16" id="ZHY-lX-Ka2"/>
                                         <constraint firstItem="nWT-8k-7et" firstAttribute="top" secondItem="SKc-Ej-gPg" secondAttribute="top" constant="16" id="bTj-wW-8wy"/>
+                                        <constraint firstItem="Wc4-Jm-lvC" firstAttribute="leading" secondItem="SKc-Ej-gPg" secondAttribute="leading" constant="16" id="dyU-3U-S5l"/>
+                                        <constraint firstItem="ZWO-ti-qAh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wc4-Jm-lvC" secondAttribute="trailing" constant="16" id="f5Q-Ik-RCC"/>
                                         <constraint firstItem="FOI-nF-ESy" firstAttribute="top" secondItem="Kv0-rC-Lg3" secondAttribute="top" id="go5-jI-meE"/>
                                         <constraint firstItem="ZWO-ti-qAh" firstAttribute="centerX" secondItem="SKc-Ej-gPg" secondAttribute="centerX" id="izv-kc-2UY"/>
                                         <constraint firstItem="g2c-ZQ-duq" firstAttribute="leading" secondItem="ZWO-ti-qAh" secondAttribute="trailing" constant="16" id="jvP-y1-9BK"/>
@@ -161,13 +170,14 @@
                                     <outlet property="pressureLabel" destination="Kv0-rC-Lg3" id="EDs-gO-B8d"/>
                                     <outlet property="temperatureLabel" destination="g2c-ZQ-duq" id="nal-b7-Def"/>
                                     <outlet property="weatherImageView" destination="ZWO-ti-qAh" id="7qI-JJ-jZg"/>
+                                    <outlet property="windLabel" destination="Wc4-Jm-lvC" id="WCN-Dv-wpz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ForecastCell" rowHeight="133" id="cJ5-fB-RhC" userLabel="Forecast Table View Cell" customClass="ForecastTableViewCell" customModule="WeatherTest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="299" width="320" height="133"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ForecastCell" rowHeight="115" id="cJ5-fB-RhC" userLabel="Forecast Table View Cell" customClass="ForecastTableViewCell" customModule="WeatherTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="317" width="320" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cJ5-fB-RhC" id="Qne-EF-qbS">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71V-o6-XOZ" userLabel="Date Label">
@@ -207,13 +217,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQC-DS-Sqy">
+                                            <rect key="frame" x="271" y="37" width="33" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="rQC-DS-Sqy" firstAttribute="trailing" secondItem="CoM-2w-aSJ" secondAttribute="trailing" id="9zM-Tf-rnW"/>
                                         <constraint firstItem="yZt-sR-OSl" firstAttribute="top" secondItem="cco-EE-mKd" secondAttribute="bottom" constant="8" id="FAZ-c9-dxv"/>
+                                        <constraint firstItem="rQC-DS-Sqy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ACq-aL-1Xt" secondAttribute="trailing" constant="16" id="FPn-2p-uEV"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2BL-rp-Q0F" secondAttribute="trailing" constant="16" id="QdE-3U-32x"/>
                                         <constraint firstItem="ACq-aL-1Xt" firstAttribute="leading" secondItem="cco-EE-mKd" secondAttribute="trailing" constant="16" id="SWo-vp-Cd2"/>
                                         <constraint firstItem="CoM-2w-aSJ" firstAttribute="top" secondItem="yZt-sR-OSl" secondAttribute="top" id="T89-Lk-kVc"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yZt-sR-OSl" secondAttribute="bottom" constant="8" id="Tcx-pN-Ddm"/>
+                                        <constraint firstItem="rQC-DS-Sqy" firstAttribute="top" secondItem="ACq-aL-1Xt" secondAttribute="top" id="Tpe-Le-tpo"/>
                                         <constraint firstItem="cco-EE-mKd" firstAttribute="leading" secondItem="Qne-EF-qbS" secondAttribute="leading" constant="16" id="Wxg-s3-IiT"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ACq-aL-1Xt" secondAttribute="trailing" constant="16" id="XKo-g2-T05"/>
                                         <constraint firstItem="2BL-rp-Q0F" firstAttribute="bottom" secondItem="cco-EE-mKd" secondAttribute="bottom" id="YHH-DE-bDE"/>
@@ -236,6 +255,7 @@
                                     <outlet property="pressureLabel" destination="yZt-sR-OSl" id="ZWL-bF-04h"/>
                                     <outlet property="temperatureLabel" destination="ACq-aL-1Xt" id="9ar-L4-jfO"/>
                                     <outlet property="weatherImageView" destination="cco-EE-mKd" id="zhF-qo-ELw"/>
+                                    <outlet property="windLabel" destination="rQC-DS-Sqy" id="D5L-3g-Qaj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -250,11 +270,11 @@
             </objects>
             <point key="canvasLocation" x="776.25" y="964.43661971830988"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search Table View Controller-->
         <scene sceneID="mxd-LR-Lbc">
             <objects>
-                <tableViewController storyboardIdentifier="SearchViewController" id="Y5b-hW-rfP" userLabel="Search View Controller" customClass="SearchViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="p5x-aI-9Ms">
+                <tableViewController storyboardIdentifier="SearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="Y5b-hW-rfP" userLabel="Search Table View Controller" customClass="SearchViewController" customModule="WeatherTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="p5x-aI-9Ms">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

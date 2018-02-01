@@ -16,23 +16,8 @@ class WeatherViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let city = city else { return }
-        let name = city.name
-        let country = city.country
-        NetworkManager.getWeatherForCity(withName: name, inCountry: country, completionHandler: { (weather, error) in
-            guard error == nil, let weather = weather else { return }
-            self.weather = weather
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
-        NetworkManager.getForecastsForCity(withName: name, inCountry: country, completionHandler: { (forecasts, error) in
-            guard error == nil, let forecasts = forecasts else { return }
-            self.forecasts = forecasts
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        })
+        getWeather()
+        getForecasts()
     }
     
     // MARK: - Table view data source
@@ -60,6 +45,64 @@ class WeatherViewController: UITableViewController {
         cell.backgroundColor = index % 2 == 0 ? .white : Colors.cellColor
         cell.setup(forForecast: forecast)
         return cell
+    }
+    
+    // MARK: - Custom functions
+    
+    func getWeather() {
+        guard let city = city else { return }
+        DatabaseManager.getWeather(forCity: city, completionHandler: { (weather) in
+            guard let weather = weather else { return }
+            self.weather = weather
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        let name = city.name
+        let country = city.country
+        NetworkManager.getWeatherForCity(withName: name, inCountry: country, completionHandler: { (weather, error) in
+            guard error == nil, let weather = weather else {
+                AlertManager.showAlert(withTitle: "Error", withMessage: "Error getting weather from the server. You see the last saved data", inViewController: self)
+                return
+            }
+            DatabaseManager.addWeather(weather: weather, forCity: city, completionHandler: { (success) in
+                if !success {
+                    AlertManager.showAlert(withTitle: "Error", withMessage: "Error saving data to the database", inViewController: self)
+                }
+            })
+            self.weather = weather
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    func getForecasts() {
+        guard let city = city else { return }
+        DatabaseManager.getForecasts(forCity: city, completionHandler: { (forecasts) in
+            guard let forecasts = forecasts else { return }
+            self.forecasts = forecasts.sorted(by: { $0.date < $1.date })
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        let name = city.name
+        let country = city.country
+        NetworkManager.getForecastsForCity(withName: name, inCountry: country, completionHandler: { (forecasts, error) in
+            guard error == nil, let forecasts = forecasts else {
+                AlertManager.showAlert(withTitle: "Error", withMessage: "Error getting forecast from the server. You see the last saved data", inViewController: self)
+                return
+            }
+            DatabaseManager.addForecasts(forecasts: forecasts, forCity: city, completionHandler: { (success) in
+                if !success {
+                    AlertManager.showAlert(withTitle: "Error", withMessage: "Error saving data to the database", inViewController: self)
+                }
+            })
+            self.forecasts = forecasts.sorted(by: { $0.date < $1.date })
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
     
 }

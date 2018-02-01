@@ -13,8 +13,10 @@
 		D9C119FC201B7ACC00965015 /* APIRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C119FB201B7ACC00965015 /* APIRoutes.swift */; };
 		D9C11A00201B878700965015 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C119FF201B878700965015 /* NetworkManager.swift */; };
 		D9C5A7D8201E9721008DA925 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5A7D7201E9721008DA925 /* WeatherTableViewCell.swift */; };
+		D9C609F820235F3D0040F8D3 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C609F720235F3D0040F8D3 /* AlertManager.swift */; };
 		D9C74B2620210F1A00B5DB47 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C74B2520210F1A00B5DB47 /* Forecast.swift */; };
 		D9C74B2820211C1200B5DB47 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C74B2720211C1200B5DB47 /* ForecastTableViewCell.swift */; };
+		D9D0E81D20220D5900F33C19 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D0E81C20220D5900F33C19 /* DatabaseManager.swift */; };
 		D9FF1EF9201B585B0014D568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FF1EF8201B585B0014D568 /* AppDelegate.swift */; };
 		D9FF1EFE201B585B0014D568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FF1EFC201B585B0014D568 /* Main.storyboard */; };
 		D9FF1F01201B585B0014D568 /* WeatherTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9FF1EFF201B585B0014D568 /* WeatherTest.xcdatamodeld */; };
@@ -33,8 +35,10 @@
 		D9C119FB201B7ACC00965015 /* APIRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRoutes.swift; sourceTree = "<group>"; };
 		D9C119FF201B878700965015 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D9C5A7D7201E9721008DA925 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		D9C609F720235F3D0040F8D3 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		D9C74B2520210F1A00B5DB47 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		D9C74B2720211C1200B5DB47 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		D9D0E81C20220D5900F33C19 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		D9FF1EF5201B585B0014D568 /* WeatherTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FF1EF8201B585B0014D568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9FF1EFD201B585B0014D568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 		D9C119FE201B876500965015 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D9C609F720235F3D0040F8D3 /* AlertManager.swift */,
+				D9D0E81C20220D5900F33C19 /* DatabaseManager.swift */,
 				D9C119FF201B878700965015 /* NetworkManager.swift */,
 			);
 			name = Managers;
@@ -220,8 +226,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C609F820235F3D0040F8D3 /* AlertManager.swift in Sources */,
 				D9C5A7D8201E9721008DA925 /* WeatherTableViewCell.swift in Sources */,
 				D9C11A00201B878700965015 /* NetworkManager.swift in Sources */,
+				D9D0E81D20220D5900F33C19 /* DatabaseManager.swift in Sources */,
 				D94F5576201E6589006FA7CF /* Colors.swift in Sources */,
 				D9FF1F01201B585B0014D568 /* WeatherTest.xcdatamodeld in Sources */,
 				D9C74B2820211C1200B5DB47 /* ForecastTableViewCell.swift in Sources */,

@@ -16,7 +16,6 @@ protocol SearchViewControllerDelegate {
 
 class SearchViewController: UITableViewController {
     
-    var delegate: SearchViewControllerDelegate?
     var cities = [City]()
     
     var searchController = UISearchController(searchResultsController: nil)
@@ -34,10 +33,6 @@ class SearchViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = cities.count
@@ -57,15 +52,28 @@ class SearchViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         let city = cities[index]
-        delegate?.searchViewControllerDidSelect(city: city)
-        navigationController?.popViewController(animated: true)
+        DatabaseManager.addCity(city: city, completionHandler: { (success) in
+            if !success {
+                AlertManager.showAlert(withTitle: "Error", withMessage: "Error saving data to the database", inViewController: self, actionHandler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                })
+                return
+            }
+            navigationController?.popViewController(animated: true)
+        })
     }
     
     // MARK: - Custom functions
     
     func getCities(withName name: String) {
         NetworkManager.getCities(withName: name, completionHandler: { (cities, error) in
-            guard error == nil, let cities = cities else { return }
+            guard error == nil, let cities = cities else {
+                AlertManager.showAlert(withTitle: "Error", withMessage: "Error getting cities from the server", inViewController: self)
+                return
+            }
+            if cities.count == 0 {
+                AlertManager.showAlert(withTitle: "Attention", withMessage: "Сities with this name are not found", inViewController: self)
+            }
             self.cities = cities
             DispatchQueue.main.async {
                 self.tableView.reloadData()

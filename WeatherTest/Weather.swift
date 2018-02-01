@@ -69,13 +69,27 @@ class Weather {
             case 348.75 ..< 360.0:
                 self.windDirection = "N"
             default:
-                self.windDirection = "N"
+                self.windDirection = "Unknown"
                 break
             }
         } else {
             self.windDirection = "Unknown"
         }
-        self.windSpeed = windSpeed?.description ?? "Unknown"
+        if let windSpeed = windSpeed {
+            self.windSpeed = String(format: "%.1f", windSpeed)
+        } else {
+            self.windSpeed = "Unknown"
+        }
+    }
+    
+    init(temperature: String?, pressure: String?, humidity: String?, description: String?, icon: String?, windDirection: String?, windSpeed: String?) {
+        self.temperature = temperature ?? "Unknown"
+        self.pressure = pressure ?? "Unknown"
+        self.humidity = humidity ?? "Unknown"
+        self.description = description ?? "Unknown"
+        self.icon = icon ?? "Unknown"
+        self.windDirection = windDirection ?? "Unknown"
+        self.windSpeed = windSpeed ?? "Unknown"
     }
     
 }

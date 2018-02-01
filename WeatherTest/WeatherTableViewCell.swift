@@ -13,6 +13,7 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var geoCoordsLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
@@ -22,6 +23,7 @@ class WeatherTableViewCell: UITableViewCell {
         cityNameLabel.text = city.name + ", " + city.country
         geoCoordsLabel.text = "Geo coords: [" + city.latitude + ", " + city.longitude + "]"
         weatherImageView.image = UIImage(named: weather.icon)
+        windLabel.text = "Wind: " + weather.windDirection + "\n" + weather.windSpeed + " m/s"
         temperatureLabel.text = weather.temperature + " ℃"
         descriptionLabel.text = weather.description.capitalized
         pressureLabel.text = "Pressure: " + weather.pressure + " mmHg"
